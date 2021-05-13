@@ -87,7 +87,7 @@ export const getAllPosts = async (pageMap: PageMap) => {
     })
 
     const stats = readingTime(content.join(""))
-    const params = new URLSearchParams({ page: slug })
+    const params = new URLSearchParams({ page: `/blog/${slug}` })
 
     const response = await fetch(
       `https://api.splitbee.io/v1/daniell.dev/pageviews?${params}`,
