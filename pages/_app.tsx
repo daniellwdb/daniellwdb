@@ -41,8 +41,8 @@ Router.events.on("routeChangeError", progress.finish)
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     splitbee.init({
-      apiUrl: "/sb-api",
-      scriptUrl: "/sb.js",
+      scriptUrl: "/bee.js",
+      apiUrl: "/_hive",
     })
   }, [])
 
