@@ -1,0 +1,46 @@
+.notion-center,
+.notion-title-center .notion-title {
+  text-align: center;
+}
+
+.notion > * {
+  padding: unset;
+}
+
+.notion-app {
+  background: unset;
+  min-height: unset;
+}
+
+.notion-viewport {
+  display: none;
+}
+
+.notion-header {
+  display: none;
+}
+
+.notion-page-scroller {
+  min-height: unset;
+}
+
+.notion-page-cover {
+  border-radius: var(--chakra-radii-3xl);
+  box-shadow: var(--chakra-shadows-md);
+}
+
+.notion-page {
+  width: var(--chakra-sizes-full);
+  padding-right: unset;
+  padding-bottom: unset;
+  padding-left: unset;
+}
+
+.notion-callout {
+  text-align: left;
+}
+
+.notion-code {
+  background-color: #2e3440;
+  border-radius: var(--chakra-radii-md);
+}

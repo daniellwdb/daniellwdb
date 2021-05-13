@@ -1,0 +1,41 @@
+root: true
+
+env:
+  shared-node-browser: true
+  es2021: true
+
+extends:
+  - airbnb
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+  - prettier
+
+parser: "@typescript-eslint/parser"
+
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 12
+  sourceType: module
+
+plugins:
+  - react
+  - "@typescript-eslint"
+
+settings:
+  import/resolver: typescript
+
+rules:
+  "@typescript-eslint/explicit-module-boundary-types": off
+  curly: [error, all]
+  import/extensions: off
+  import/no-extraneous-dependencies: off
+  newline-before-return: error
+  no-await-in-loop: off
+  no-continue: off
+  no-restricted-syntax: off
+  react/jsx-filename-extension: [error, { extensions: [.tsx] }]
+  react/jsx-props-no-spreading: off
+  react/jsx-uses-react: off
+  react/no-array-index-key: off
+  react/react-in-jsx-scope: off
