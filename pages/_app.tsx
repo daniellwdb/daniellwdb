@@ -5,11 +5,11 @@ import ProgressBar from "@badrap/bar-of-progress"
 import splitbee from "@splitbee/web"
 import { useEffect } from "react"
 import { DefaultSeo } from "next-seo"
+import Prism from "prismjs"
 import seo from "../next-seo.config"
 
 import "react-notion-x/src/styles.css"
 
-import "prismjs"
 import "@/styles/prism-nord.css"
 import "prismjs/components/prism-bash"
 import "prismjs/components/prism-javascript"
@@ -40,6 +40,8 @@ Router.events.on("routeChangeError", progress.finish)
 
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
+    Prism.highlightAll()
+
     splitbee.init({
       scriptUrl: "/bee.js",
       apiUrl: "/_hive",
