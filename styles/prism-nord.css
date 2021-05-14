@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "Cascadia Code";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/CascadiaCode.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
 /**
  * Nord Theme Originally by Arctic Ice Studio
  * https://nordtheme.com
@@ -9,8 +20,8 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #f8f8f2;
   background: none;
-  font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono",
+    "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;

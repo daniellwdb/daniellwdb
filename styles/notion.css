@@ -39,8 +39,3 @@
 .notion-callout {
   text-align: left;
 }
-
-.notion-code {
-  background-color: #2e3440;
-  border-radius: var(--chakra-radii-md);
-}

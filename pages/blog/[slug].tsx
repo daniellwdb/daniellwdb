@@ -3,10 +3,11 @@ import { Avatar } from "@chakra-ui/avatar"
 import { Box, Container, Flex, HStack, Text } from "@chakra-ui/layout"
 import type { GetStaticProps, InferGetStaticPropsType } from "next"
 import type { ExtendedRecordMap } from "notion-types"
-import { Code, Equation, NotionRenderer } from "react-notion-x"
+import { Equation, NotionRenderer } from "react-notion-x"
 import format from "date-fns/format"
 import { Tag } from "@chakra-ui/tag"
 import Pagination from "@/components/Pagination"
+import Code from "@/components/Code"
 import { useRef } from "react"
 import useUtterances from "@/hooks/useUtterances"
 import { NextSeo } from "next-seo"
@@ -143,7 +144,7 @@ const BlogPost = ({
             🏠 Back to home page
           </Button>
           <NotionRenderer
-            className="notion-title-center line-numbers"
+            className="notion-title-center"
             recordMap={recordMap}
             components={{
               // Bit of a hack to add our own component where "NotionRenderer"
