@@ -21,7 +21,7 @@ type Props = {
   pagination: Partial<Record<"prev" | "next", Post | null>>
 }
 
-type BlogPostMetaProps = {
+type BlogPostHeroProps = {
   post: Post
 }
 
@@ -63,7 +63,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-const BlogPostHero = ({ post }: BlogPostMetaProps) => (
+const BlogPostHero = ({ post }: BlogPostHeroProps) => (
   <Box w="full">
     <Text fontSize="lg" align="center" color="gray.400" mb={5}>
       {post.summary}
