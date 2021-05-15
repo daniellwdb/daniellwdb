@@ -36,7 +36,7 @@ const Code = ({ code, language }: ComponentProps<typeof ReactNotionXCode>) => (
               {i + 1}
             </chakra.span>
             {line.map((token, key) => (
-              <span key={key} {...getTokenProps({ token, key })} />
+              <chakra.span key={key} {...getTokenProps({ token, key })} />
             ))}
           </chakra.div>
         ))}
