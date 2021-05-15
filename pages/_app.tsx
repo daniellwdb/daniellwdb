@@ -23,10 +23,12 @@ Router.events.on("routeChangeError", progress.finish)
 
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
-    splitbee.init({
-      scriptUrl: "/bee.js",
-      apiUrl: "/_hive",
-    })
+    if (process.env.NODE_ENV === "production") {
+      splitbee.init({
+        scriptUrl: "/bee.js",
+        apiUrl: "/_hive",
+      })
+    }
   }, [])
 
   return (
