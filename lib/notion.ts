@@ -90,7 +90,7 @@ export const getAllPosts = async (pageMap: PageMap) => {
     const params = new URLSearchParams({ page: `/blog/${slug}` })
 
     const response = await fetch(
-      `https://api.splitbee.io/v1/daniell.dev/pageviews?${params}`,
+      `https://api.splitbee.io/v1/${process.env.NEXT_PUBLIC_DOMAIN}/pageviews?${params}`,
       {
         headers: {
           "x-api-key": process.env.SPLITBEE_API_TOKEN,
