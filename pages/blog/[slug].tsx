@@ -8,12 +8,12 @@ import format from "date-fns/format"
 import { Tag } from "@chakra-ui/tag"
 import Pagination from "@/components/Pagination"
 import Code from "@/components/Code"
-import { useRef } from "react"
-import useUtterances from "@/hooks/useUtterances"
+import { createRef, useEffect, useState } from "react"
 import { NextSeo } from "next-seo"
 import { Button } from "@chakra-ui/button"
 import NextChakraLink from "@/components/NextChakraLink"
 import Footer from "@/components/Footer"
+import { useRouter } from "next/router"
 
 type Props = {
   recordMap: ExtendedRecordMap
@@ -108,12 +108,43 @@ const BlogPost = ({
     return null
   }
 
-  const utterancesRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
+  const utterancesRef = createRef<HTMLDivElement>()
+  const [loading, setLoading] = useState(false)
 
-  const loading = useUtterances(utterancesRef, {
-    repo: "daniellwdb/website",
-    theme: "photon-dark",
-  })
+  useEffect(() => {
+    const handleRouteChangeStart = () => {
+      setLoading(true)
+    }
+
+    const handleRouteChangeComplete = () => {
+      setLoading(false)
+    }
+
+    router.events.on("routeChangeStart", handleRouteChangeStart)
+    router.events.on("routeChangeComplete", handleRouteChangeComplete)
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChangeStart)
+      router.events.off("routeChangeComplete", handleRouteChangeComplete)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (loading) {
+      utterancesRef.current?.firstChild?.remove()
+    } else {
+      const scriptElement = document.createElement("script")
+      scriptElement.src = "https://utteranc.es/client.js"
+      scriptElement.async = true
+      scriptElement.defer = true
+      scriptElement.setAttribute("crossorigin", "annonymous")
+      scriptElement.setAttribute("repo", "daniellwdb/website")
+      scriptElement.setAttribute("issue-term", "title")
+      scriptElement.setAttribute("theme", "photon-dark")
+      utterancesRef.current?.appendChild(scriptElement)
+    }
+  }, [utterancesRef])
 
   return (
     <>
@@ -158,9 +189,7 @@ const BlogPost = ({
             darkMode
           />
           <Pagination pagination={pagination} />
-          <Box mt={4} ref={utterancesRef}>
-            {loading && <Text>Loading comments...</Text>}
-          </Box>
+          <Box mt={4} ref={utterancesRef} />
           <Footer />
         </Container>
       </Box>
