@@ -157,7 +157,7 @@ const BlogPost = ({
             fullPage
             darkMode
           />
-          <Pagination pagination={pagination ?? {}} />
+          <Pagination pagination={pagination} />
           <Box mt={4} ref={utterancesRef}>
             {loading && <Text>Loading comments...</Text>}
           </Box>
