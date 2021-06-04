@@ -40,7 +40,7 @@
     "framer-motion": "^4.1.17",
     "next": "10.2.3",
     "next-seo": "^4.24.0",
-    "notion-client": "^4.6.0",
+    "notion-client": "^4.6.4",
     "pino": "^6.11.3",
     "preact": "^10.5.13",
     "prism-react-renderer": "^1.2.0",
