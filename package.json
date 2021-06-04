@@ -32,7 +32,7 @@
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
     "@chakra-ui/icons": "^1.0.13",
-    "@chakra-ui/react": "^1.6.1",
+    "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@splitbee/web": "^0.2.4",
