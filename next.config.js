@@ -1,12 +1,15 @@
-module.exports = {
+// @ts-check
+
+/**
+ * @type {import('next/dist/next-server/server/config').NextConfig}
+ * */
+const nextConfig = {
   future: {
     webpack5: true,
   },
   reactStrictMode: true,
   experimental: {
     eslint: true,
-    modern: true,
-    optimizeFonts: true,
     turboMode: true,
   },
   webpack: (config, { dev, isServer }) => {
@@ -34,3 +37,5 @@ module.exports = {
     ]
   },
 }
+
+module.exports = nextConfig
