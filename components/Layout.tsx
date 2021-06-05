@@ -5,7 +5,7 @@ import Header from "./Header"
 
 const Layout = ({ children }: Record<"children", ReactNode>) => (
   <Box as="main">
-    <Container maxW="2xl" mb={16}>
+    <Container maxW="container.md" mb={16}>
       <Header />
       {children}
       <Footer />
