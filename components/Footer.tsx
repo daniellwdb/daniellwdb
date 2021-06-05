@@ -20,6 +20,9 @@ const Footer = () => (
         <Button as={NextChakraLink} href="/" variant="link">
           Home
         </Button>
+        <Button as={NextChakraLink} href="/about" variant="link">
+          About
+        </Button>
       </VStack>
       <VStack spacing={4} align="start">
         <Button

@@ -1,7 +1,7 @@
 import BlogPostCard from "@/components/BlogPostCard"
-import Footer from "@/components/Footer"
+import Layout from "@/components/Layout"
 import { getAllPages, getAllPosts } from "@/lib/notion"
-import { Box, Container, Heading, VStack } from "@chakra-ui/layout"
+import { Heading, VStack } from "@chakra-ui/layout"
 import type { InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
 import { NotionRenderer } from "react-notion-x"
@@ -32,28 +32,23 @@ const Home = ({
   }
 
   return (
-    <>
+    <Layout>
       <NextSeo title="Home" />
-      <Box as="main">
-        <Container maxW="2xl" mb={16}>
-          <NotionRenderer
-            className="notion-center"
-            recordMap={recordMap}
-            fullPage
-            darkMode
-          />
-          <Heading as="h2" size="xl" letterSpacing="tight" mb={4}>
-            Blog posts
-          </Heading>
-          <VStack spacing={8}>
-            {posts.map((post) => (
-              <BlogPostCard key={post.id} post={post} />
-            ))}
-          </VStack>
-          <Footer />
-        </Container>
-      </Box>
-    </>
+      <NotionRenderer
+        className="notion-center"
+        recordMap={recordMap}
+        fullPage
+        darkMode
+      />
+      <Heading as="h2" size="xl" letterSpacing="tight" mb={4}>
+        Blog posts
+      </Heading>
+      <VStack spacing={8}>
+        {posts.map((post) => (
+          <BlogPostCard key={post.id} post={post} />
+        ))}
+      </VStack>
+    </Layout>
   )
 }
 

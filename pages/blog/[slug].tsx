@@ -1,6 +1,6 @@
 import { getAllPages, getAllPosts, Post, notion } from "@/lib/notion"
 import { Avatar } from "@chakra-ui/avatar"
-import { Box, Container, Flex, HStack, Text } from "@chakra-ui/layout"
+import { Box, Flex, HStack, Text } from "@chakra-ui/layout"
 import type { GetStaticProps, InferGetStaticPropsType } from "next"
 import type { ExtendedRecordMap } from "notion-types"
 import { Equation, NotionRenderer } from "react-notion-x"
@@ -10,10 +10,8 @@ import Pagination from "@/components/Pagination"
 import Code from "@/components/Code"
 import { createRef, useEffect, useState } from "react"
 import { NextSeo } from "next-seo"
-import { Button } from "@chakra-ui/button"
-import NextChakraLink from "@/components/NextChakraLink"
-import Footer from "@/components/Footer"
 import { useRouter } from "next/router"
+import Layout from "@/components/Layout"
 
 type Props = {
   recordMap: ExtendedRecordMap
@@ -147,7 +145,7 @@ const BlogPost = ({
   }, [utterancesRef])
 
   return (
-    <>
+    <Layout>
       <NextSeo
         title={`${post.icon} ${post.title}`}
         description={post.summary}
@@ -169,31 +167,24 @@ const BlogPost = ({
           },
         ]}
       />
-      <Box as="main">
-        <Container maxW="2xl" mb={16}>
-          <Button as={NextChakraLink} href="/" variant="link" my={8}>
-            🏠 Back to home page
-          </Button>
-          <NotionRenderer
-            className="notion-title-center"
-            recordMap={recordMap}
-            components={{
-              // Bit of a hack to add our own component where "NotionRenderer"
-              // would usually display a collection row.
-              // eslint-disable-next-line react/display-name
-              collectionRow: () => <BlogPostHero post={post} />,
-              code: Code,
-              equation: Equation,
-            }}
-            fullPage
-            darkMode
-          />
-          <Pagination pagination={pagination} />
-          <Box mt={4} ref={utterancesRef} />
-          <Footer />
-        </Container>
-      </Box>
-    </>
+
+      <NotionRenderer
+        className="notion-title-center"
+        recordMap={recordMap}
+        components={{
+          // Bit of a hack to add our own component where "NotionRenderer"
+          // would usually display a collection row.
+          // eslint-disable-next-line react/display-name
+          collectionRow: () => <BlogPostHero post={post} />,
+          code: Code,
+          equation: Equation,
+        }}
+        fullPage
+        darkMode
+      />
+      <Pagination pagination={pagination} />
+      <Box mt={4} ref={utterancesRef} />
+    </Layout>
   )
 }
 

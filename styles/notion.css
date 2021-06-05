@@ -39,3 +39,19 @@
 .notion-callout {
   text-align: left;
 }
+
+.notion-collection-card {
+  background: var(--chakra-colors-gray-700);
+}
+
+.notion-collection-card:hover {
+  background: var(--chakra-colors-gray-600);
+}
+
+.notion-collection-card-cover {
+  border-bottom: unset;
+}
+
+.notion-collection-card-body {
+  display: none;
+}
