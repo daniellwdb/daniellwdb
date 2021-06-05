@@ -1,4 +1,6 @@
 // @ts-check
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const generateSiteMap = require("./scripts/sitemap")
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -13,6 +15,14 @@ const nextConfig = {
     turboMode: true,
   },
   webpack: (config, { dev, isServer }) => {
+    if (isServer) {
+      const generateSiteMapPromise = async () => {
+        await generateSiteMap()
+      }
+
+      generateSiteMapPromise()
+    }
+
     // Replace React with Preact in client production build
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
