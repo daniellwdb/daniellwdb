@@ -54,6 +54,9 @@ const Footer = () => (
         </Button>
       </VStack>
       <VStack spacing={4} align="start">
+        <Button as={NextChakraLink} href="/setup" variant="link">
+          Setup
+        </Button>
         <Button
           as={NextChakraLink}
           href="https://gist.github.com/daniellwdb"
@@ -61,7 +64,7 @@ const Footer = () => (
           target="_blank"
           variant="link"
         >
-          Gists
+          Snippets
         </Button>
       </VStack>
     </SimpleGrid>
