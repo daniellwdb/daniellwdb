@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.notion {
+  font-family: var(--chakra-fonts-body);
+}
+
 .notion > * {
   padding: unset;
 }
@@ -38,6 +42,12 @@
 
 .notion-callout {
   text-align: left;
+}
+
+.notion-text {
+  line-height: 1.75;
+  padding: unset;
+  margin-top: 1.25em;
 }
 
 .notion-collection-card {

@@ -5,7 +5,9 @@ import ProgressBar from "@badrap/bar-of-progress"
 import splitbee from "@splitbee/web"
 import { useEffect } from "react"
 import { DefaultSeo } from "next-seo"
+import theme from "theme"
 import seo from "../next-seo.config"
+import "@/styles/global.css"
 import "react-notion-x/src/styles.css"
 import "@/styles/prism-nord.css"
 import "katex/dist/katex.min.css"
@@ -34,7 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <DefaultSeo {...seo} />
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </>

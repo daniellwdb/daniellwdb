@@ -12,6 +12,7 @@ import { createRef, useEffect, useState } from "react"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 import Layout from "@/components/Layout"
+import { Divider } from "@chakra-ui/react"
 
 type Props = {
   recordMap: ExtendedRecordMap
@@ -94,6 +95,7 @@ const BlogPostHero = ({ post }: BlogPostHeroProps) => (
         <Tag key={index}>{tag}</Tag>
       ))}
     </HStack>
+    <Divider my={6} />
   </Box>
 )
 
