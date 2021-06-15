@@ -43,11 +43,14 @@ const Header = () => {
           🏠 Back to home page
         </Button>
       )}
-      <Box as="nav">
+      <Flex as="nav">
         <Button as={NextChakraLink} href="/about" variant="link">
           About
         </Button>
-      </Box>
+        <Button as={NextChakraLink} href="/blog" variant="link" ml={8}>
+          Blog
+        </Button>
+      </Flex>
     </Flex>
   )
 }
