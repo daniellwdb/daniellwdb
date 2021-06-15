@@ -47,6 +47,9 @@ const Header = () => {
         <Button as={NextChakraLink} href="/about" variant="link">
           About
         </Button>
+        <Button as={NextChakraLink} href="/blog" variant="link" ml={8}>
+          Blog
+        </Button>
       </Box>
     </Flex>
   )
