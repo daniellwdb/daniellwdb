@@ -6,9 +6,6 @@ const generateSiteMap = require("./scripts/sitemap")
  * @type {import('next/dist/next-server/server/config').NextConfig}
  * */
 const nextConfig = {
-  future: {
-    webpack5: true,
-  },
   reactStrictMode: true,
   experimental: {
     eslint: true,
