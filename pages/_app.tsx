@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
+import { ThemeProvider } from "next-themes"
 import Router from "next/router"
 import ProgressBar from "@badrap/bar-of-progress"
 import splitbee from "@splitbee/web"
@@ -37,7 +38,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <DefaultSeo {...seo} />
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <ThemeProvider attribute="class">
+          <Component {...pageProps} />
+        </ThemeProvider>
       </ChakraProvider>
     </>
   )
