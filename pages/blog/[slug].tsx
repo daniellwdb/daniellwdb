@@ -182,6 +182,8 @@ const BlogPost = ({
           equation: Equation,
         }}
         fullPage
+        showTableOfContents
+        minTableOfContentsItems={3}
         darkMode
       />
       <Pagination pagination={pagination} />

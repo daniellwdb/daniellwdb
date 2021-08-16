@@ -65,3 +65,11 @@
 .notion-collection-card-body {
   display: none;
 }
+
+.notion-table-of-contents-item {
+  font-size: unset;
+}
+
+.notion-table-of-contents-item:first-child {
+  display: none;
+}

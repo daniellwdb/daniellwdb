@@ -56,9 +56,10 @@ export const getAllPosts = async (pageMap: PageMap) => {
       throw new Error(`No block value or format for block for page ${pageId}`)
     }
 
-    const published = getPageProperty("published", block.value, recordMap)
+    const status = getPageProperty("status", block.value, recordMap)
+    const isDev = process.env.NODE_ENV === "development"
 
-    if (!published || published === "No") {
+    if (status === "Private" || (status === "Draft" && !isDev)) {
       continue
     }
 

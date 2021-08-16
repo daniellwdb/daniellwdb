@@ -6,6 +6,7 @@ env:
 
 extends:
   - airbnb
+  - plugin:@next/next/recommended
   - plugin:@typescript-eslint/recommended
   - plugin:react/recommended
   - prettier
@@ -31,9 +32,9 @@ rules:
   import/extensions: off
   import/no-extraneous-dependencies: off
   newline-before-return: error
-  no-await-in-loop: off
-  no-continue: off
-  no-restricted-syntax: off
+  no-await-in-loop: 0
+  no-continue: 0
+  no-restricted-syntax: 0
   react/jsx-filename-extension: [error, { extensions: [.tsx] }]
   react/jsx-props-no-spreading: off
   react/jsx-uses-react: off
