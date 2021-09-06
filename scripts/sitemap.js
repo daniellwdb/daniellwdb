@@ -42,9 +42,9 @@ async function generateSiteMap() {
       throw new Error(`No block value or format for block for page ${pageId}`)
     }
 
-    const published = getPageProperty("published", block.value, recordMap)
+    const status = getPageProperty("status", block.value, recordMap)
 
-    if (published && published === "Yes") {
+    if (status && status === "Publish") {
       const slug = getCanonicalPageId(pageId, recordMap, {
         uuid: false,
       })
