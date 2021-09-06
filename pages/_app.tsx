@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { ThemeProvider } from "next-themes"
 import Router from "next/router"
 import ProgressBar from "@badrap/bar-of-progress"
+import Layout from "@/components/Layout"
 import splitbee from "@splitbee/web"
 import { useEffect } from "react"
 import { DefaultSeo } from "next-seo"
@@ -39,7 +40,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <DefaultSeo {...seo} />
       <ChakraProvider theme={theme}>
         <ThemeProvider attribute="class">
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </ChakraProvider>
     </>

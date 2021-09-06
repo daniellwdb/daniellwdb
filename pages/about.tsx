@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout"
 import { notion } from "@/lib/notion"
 import type { InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
@@ -24,7 +23,7 @@ const About = ({
   const { components } = useNotionContext()
 
   return (
-    <Layout>
+    <>
       <NextSeo title="About" />
       <NotionRenderer
         recordMap={recordMap}
@@ -42,7 +41,7 @@ const About = ({
         fullPage
         darkMode
       />
-    </Layout>
+    </>
   )
 }
 

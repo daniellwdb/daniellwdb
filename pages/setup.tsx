@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout"
 import { notion } from "@/lib/notion"
 import type { InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
@@ -20,10 +19,10 @@ export const getStaticProps = async () => {
 const Setup = ({
   recordMap,
 }: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <Layout>
+  <>
     <NextSeo title="Setup" />
     <NotionRenderer recordMap={recordMap} fullPage darkMode />
-  </Layout>
+  </>
 )
 
 export default Setup

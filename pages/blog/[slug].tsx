@@ -11,7 +11,6 @@ import Code from "@/components/Code"
 import { createRef, useEffect, useState } from "react"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
-import Layout from "@/components/Layout"
 import { Divider } from "@chakra-ui/react"
 
 type Props = {
@@ -147,7 +146,7 @@ const BlogPost = ({
   }, [utterancesRef])
 
   return (
-    <Layout>
+    <>
       <NextSeo
         title={`${post.icon} ${post.title}`}
         description={post.summary}
@@ -188,7 +187,7 @@ const BlogPost = ({
       />
       <Pagination pagination={pagination} />
       <Box mt={4} ref={utterancesRef} />
-    </Layout>
+    </>
   )
 }
 

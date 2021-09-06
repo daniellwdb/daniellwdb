@@ -1,5 +1,4 @@
 import BlogPostCard from "@/components/BlogPostCard"
-import Layout from "@/components/Layout"
 import { getAllPages, getAllPosts } from "@/lib/notion"
 import { Heading, VStack } from "@chakra-ui/layout"
 import type { InferGetStaticPropsType } from "next"
@@ -32,7 +31,7 @@ const Home = ({
   }
 
   return (
-    <Layout>
+    <>
       <NextSeo title="Home" />
       <NotionRenderer
         className="notion-center"
@@ -48,7 +47,7 @@ const Home = ({
           <BlogPostCard key={post.id} post={post} />
         ))}
       </VStack>
-    </Layout>
+    </>
   )
 }
 

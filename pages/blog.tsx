@@ -1,5 +1,4 @@
 import BlogPostCard from "@/components/BlogPostCard"
-import Layout from "@/components/Layout"
 import { getAllPages, getAllPosts } from "@/lib/notion"
 import { SearchIcon } from "@chakra-ui/icons"
 import { Heading, VStack } from "@chakra-ui/layout"
@@ -28,7 +27,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   )
 
   return (
-    <Layout>
+    <>
       <NextSeo title="Blog" />
       <Heading as="h2" size="xl" letterSpacing="tight" pt={12} mb={4}>
         Blog
@@ -53,7 +52,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       ) : (
         <Text color="gray.400">No posts found.</Text>
       )}
-    </Layout>
+    </>
   )
 }
 
