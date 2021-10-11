@@ -3,14 +3,10 @@
 const generateSiteMap = require("./scripts/sitemap")
 
 /**
- * @type {import('next/dist/next-server/server/config').NextConfig}
+ * @type {import('next').NextConfig}
  * */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    eslint: true,
-    turboMode: true,
-  },
   webpack: (config, { dev, isServer }) => {
     if (isServer) {
       const generateSiteMapPromise = async () => {

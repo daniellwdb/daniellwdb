@@ -57,9 +57,8 @@ export const getAllPosts = async (pageMap: PageMap) => {
     }
 
     const status = getPageProperty("status", block.value, recordMap)
-    const isDev = process.env.NODE_ENV === "development"
 
-    if (!status || status === "Private" || (status === "Draft" && !isDev)) {
+    if (!status || status !== "Publish") {
       continue
     }
 
