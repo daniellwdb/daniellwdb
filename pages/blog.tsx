@@ -1,11 +1,11 @@
-import BlogPostCard from "@/components/BlogPostCard"
-import { getAllPages, getAllPosts } from "@/lib/notion"
 import { SearchIcon } from "@chakra-ui/icons"
 import { Heading, VStack } from "@chakra-ui/layout"
 import { Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react"
 import type { InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
 import { useState } from "react"
+import { getAllPages, getAllPosts } from "@/lib/notion"
+import BlogPostCard from "@/components/BlogPostCard"
 
 export const getStaticProps = async () => {
   const pageMap = await getAllPages()

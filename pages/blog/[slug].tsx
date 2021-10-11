@@ -1,4 +1,3 @@
-import { getAllPages, getAllPosts, Post, notion } from "@/lib/notion"
 import { Avatar } from "@chakra-ui/avatar"
 import { Box, Flex, HStack, Text } from "@chakra-ui/layout"
 import type { GetStaticProps, InferGetStaticPropsType } from "next"
@@ -6,12 +5,13 @@ import type { ExtendedRecordMap } from "notion-types"
 import { Equation, NotionRenderer } from "react-notion-x"
 import format from "date-fns/format"
 import { Tag } from "@chakra-ui/tag"
-import Pagination from "@/components/Pagination"
-import Code from "@/components/Code"
 import { createRef, useEffect, useState } from "react"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 import { Divider } from "@chakra-ui/react"
+import Code from "@/components/Code"
+import Pagination from "@/components/Pagination"
+import { getAllPages, getAllPosts, Post, notion } from "@/lib/notion"
 
 type Props = {
   recordMap: ExtendedRecordMap
@@ -23,33 +23,35 @@ type BlogPostHeroProps = {
   post: Post
 }
 
-export const getStaticProps: GetStaticProps<Props, Record<"slug", string>> =
-  async ({ params }) => {
-    const pageMap = await getAllPages()
-    const posts = await getAllPosts(pageMap)
-    const postIndex = posts.findIndex((post) => post.slug === params?.slug)
-    const post = posts[postIndex]
+export const getStaticProps: GetStaticProps<
+  Props,
+  Record<"slug", string>
+> = async ({ params }) => {
+  const pageMap = await getAllPages()
+  const posts = await getAllPosts(pageMap)
+  const postIndex = posts.findIndex((post) => post.slug === params?.slug)
+  const post = posts[postIndex]
 
-    if (!post) {
-      throw new Error(`Could not find post with slug ${params?.slug}`)
-    }
-
-    const pagination = {
-      prev: postIndex + 1 < posts.length ? posts[postIndex + 1] : null,
-      next: postIndex - 1 >= 0 ? posts[postIndex - 1] : null,
-    }
-
-    const recordMap = await notion.getPage(post.id)
-
-    return {
-      props: {
-        recordMap,
-        post,
-        pagination,
-      },
-      revalidate: 1,
-    }
+  if (!post) {
+    throw new Error(`Could not find post with slug ${params?.slug}`)
   }
+
+  const pagination = {
+    prev: postIndex + 1 < posts.length ? posts[postIndex + 1] : null,
+    next: postIndex - 1 >= 0 ? posts[postIndex - 1] : null,
+  }
+
+  const recordMap = await notion.getPage(post.id)
+
+  return {
+    props: {
+      recordMap,
+      post,
+      pagination,
+    },
+    revalidate: 1,
+  }
+}
 
 export const getStaticPaths = async () => {
   const pageMap = await getAllPages()

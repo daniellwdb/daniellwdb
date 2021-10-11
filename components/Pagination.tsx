@@ -1,6 +1,6 @@
-import type { Post } from "@/lib/notion"
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 import { Box, SimpleGrid, Text } from "@chakra-ui/layout"
+import type { Post } from "@/lib/notion"
 import NextChakraLink from "./NextChakraLink"
 
 type PaginationProps = {

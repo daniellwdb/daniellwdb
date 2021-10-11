@@ -1,9 +1,9 @@
-import BlogPostCard from "@/components/BlogPostCard"
-import { getAllPages, getAllPosts } from "@/lib/notion"
 import { Heading, VStack } from "@chakra-ui/layout"
 import type { InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
 import { NotionRenderer } from "react-notion-x"
+import { getAllPages, getAllPosts } from "@/lib/notion"
+import BlogPostCard from "@/components/BlogPostCard"
 
 export const getStaticProps = async () => {
   const pageMap = await getAllPages()

@@ -1,7 +1,7 @@
-import { notion } from "@/lib/notion"
 import type { InferGetStaticPropsType } from "next"
 import { NextSeo } from "next-seo"
 import { NotionRenderer } from "react-notion-x"
+import { notion } from "@/lib/notion"
 
 const NOTION_SETUP_PAGE_ID = "e1cb127769954d9b93c9131e097cee54"
 

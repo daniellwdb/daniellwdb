@@ -1,7 +1,7 @@
-import type { Post } from "@/lib/notion"
 import { Flex, Heading, HStack, Text } from "@chakra-ui/layout"
 import format from "date-fns/format"
 import { Tag } from "@chakra-ui/tag"
+import type { Post } from "@/lib/notion"
 import NextChakraLink from "./NextChakraLink"
 
 type BlogPostCardProps = {

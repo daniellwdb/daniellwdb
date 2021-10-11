@@ -1,8 +1,8 @@
-import fetcher from "@/lib/fetcher"
 import { createIcon } from "@chakra-ui/icon"
 import { Flex, Text } from "@chakra-ui/layout"
 import { chakra } from "@chakra-ui/system"
 import useSWR from "swr"
+import fetcher from "@/lib/fetcher"
 import NextChakraLink from "./NextChakraLink"
 
 type SpotifyStatus = {
