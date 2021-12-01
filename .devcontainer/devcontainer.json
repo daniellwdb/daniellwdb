@@ -1,0 +1,17 @@
+{
+  "name": "Node.js & TypeScript",
+  "runArgs": ["--init", "--env-file", ".devcontainer/.env.local"],
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "16-bullseye"
+    }
+  },
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib"
+  },
+  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+  "forwardPorts": [3000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
+}
