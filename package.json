@@ -21,13 +21,8 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*.{json,md}": [
-      "prettier --write"
-    ],
-    "**/*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
+    "*": "prettier --write --ignore-unknown",
+    "**/*.{ts,tsx}": "eslint --cache --fix"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",

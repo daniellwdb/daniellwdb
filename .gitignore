@@ -35,3 +35,6 @@ yarn-error.log*
 
 # fixtures
 public/sitemap.xml
+
+# eslint
+.eslintcache
