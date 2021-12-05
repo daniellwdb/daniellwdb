@@ -140,7 +140,7 @@ const BlogPost = ({
       scriptElement.async = true
       scriptElement.defer = true
       scriptElement.setAttribute("crossorigin", "annonymous")
-      scriptElement.setAttribute("repo", "daniellwdb/website")
+      scriptElement.setAttribute("repo", "daniellwdb/daniellwdb")
       scriptElement.setAttribute("issue-term", "title")
       scriptElement.setAttribute("theme", "photon-dark")
       utterancesRef.current?.appendChild(scriptElement)
