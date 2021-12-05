@@ -44,10 +44,21 @@
   text-align: left;
 }
 
+.notion-table-of-contents {
+  margin-bottom: var(--chakra-space-4);
+}
+
+.notion-h {
+  margin-top: unset;
+  margin-bottom: var(--chakra-space-4);
+  font-size: 32px;
+}
+
 .notion-text {
-  line-height: 1.75;
   padding: unset;
-  margin-top: 1.25em;
+  margin-bottom: var(--chakra-space-6);
+  line-height: 1.7;
+  font-size: var(--chakra-fontSizes-lg);
 }
 
 .notion-collection-card {
