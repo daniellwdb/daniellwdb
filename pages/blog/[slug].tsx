@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps<
   const post = posts[postIndex]
 
   if (!post) {
-    throw new Error(`Could not find post with slug ${params?.slug}`)
+    return { notFound: true }
   }
 
   const pagination = {
