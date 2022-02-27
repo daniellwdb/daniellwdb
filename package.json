@@ -33,7 +33,7 @@
     "@splitbee/web": "^0.2.4",
     "date-fns": "^2.22.1",
     "framer-motion": "^4.1.17",
-    "next": "11.1.3",
+    "next": "12.1.0",
     "next-seo": "^4.24.0",
     "next-themes": "^0.0.15",
     "notion-client": "^4.6.4",
