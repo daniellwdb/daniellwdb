@@ -76,7 +76,7 @@ const BlogPostHero = ({ post }: BlogPostHeroProps) => (
       <Flex align="center">
         <Avatar
           name="Daniell Wijdenbosch"
-          src="https://bit.ly/3eAcjRe"
+          src="https://github.com/daniellwdb.png"
           alt="Daniell Wijdenbosch"
           size="xs"
           mr={4}
