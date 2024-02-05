@@ -83,9 +83,11 @@ const publishedSortedPosts = blogCollection
             <Image
               src={DaniellImage}
               alt="Daniell sitting"
-              quality={95}
+              quality={80}
               format="webp"
               loading="lazy"
+              widths={[390, DaniellImage.width]}
+              sizes={`(max-width: 768) 390px, ${DaniellImage.width}px`}
               class="rounded-lg"
             />
           </div>
