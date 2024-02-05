@@ -1,7 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, GITHUB_USERNAME } from "../consts";
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  GITHUB_USERNAME,
+  LINKEDIN_URL,
+} from "../consts";
 import DaniellImage from "../images/daniell.jpg";
 import GitHubIcon from "../components/icons/GitHubIcon.astro";
 import RSSIcon from "../components/icons/RSSIcon.astro";
@@ -9,6 +14,7 @@ import { getCollection } from "astro:content";
 import BlogPostCard from "../components/BlogPostCard.astro";
 import { GET, type APIResponse } from "./api/spotify";
 import SpotifyTrack from "../components/SpotifyTrack.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 // import Header from "../components/Header.astro";
 
 const response = await GET(Astro);
@@ -52,15 +58,24 @@ const publishedSortedPosts = blogCollection
               I recharge by wandering through the city or in nature and enjoying
               good food.
             </p>
-            <a
-              rel="noreferrer noopener"
-              href={`https://github.com/${GITHUB_USERNAME}/`}
-            >
-              <div class="inline-flex items-center gap-1">
+            <div class="flex gap-4">
+              <a
+                rel="noreferrer noopener"
+                href={`https://github.com/${GITHUB_USERNAME}/`}
+                class="inline-flex items-center gap-1"
+              >
                 <GitHubIcon width={30} height={30} />
                 <p class="font-medium">GitHub</p>
-              </div>
-            </a>
+              </a>
+              <a
+                rel="noreferrer noopener"
+                href={LINKEDIN_URL}
+                class="inline-flex items-center gap-1"
+              >
+                <LinkedInIcon width={30} height={30} />
+                <p class="font-medium">LinkedIn</p>
+              </a>
+            </div>
           </div>
           <div
             class="aspect-ratio-1 group relative z-0 h-min w-full max-w-[300px] flex-shrink-0 lg:max-w-[390px]"
