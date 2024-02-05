@@ -34,7 +34,7 @@ export default defineConfig({
     },
   },
   image: {
-    domains: ["res.cloudinary"],
+    domains: ["res.cloudinary", "i.scdn.co"],
   },
   output: "static",
   adapter: vercelStatic({
