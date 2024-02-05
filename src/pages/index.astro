@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, GITHUB_USERNAME } from "../consts";
+import DaniellImage from "../images/daniell.jpg";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import RSSIcon from "../components/icons/RSSIcon.astro";
+import { getCollection } from "astro:content";
+import BlogPostCard from "../components/BlogPostCard.astro";
+import { GET, type APIResponse } from "./api/spotify";
+import SpotifyTrack from "../components/SpotifyTrack.astro";
+// import Header from "../components/Header.astro";
+
+const response = await GET(Astro);
+const { topTracks } = (await response.json()) as APIResponse;
+
+const blogCollection = await getCollection("blog");
+const publishedSortedPosts = blogCollection
+  .flatMap((post) => (post.data.draft ? [] : [post]))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="h-full bg-off-white font-sans text-dark-gray">
+    <main class="my-[8%] flex flex-col items-center">
+      <!-- #region Hero section -->
+      <div
+        class="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-12 md:px-6"
+      >
+        <!-- <Header /> -->
+        <div
+          class="mb-8 flex w-full flex-col justify-between gap-8 md:flex-row"
+        >
+          <div class="max-w-2xl flex-grow-0 flex-col gap-4">
+            <h1 class="mb-8 font-serif text-6xl font-bold">
+              Hello, I'm Daniell.
+            </h1>
+            <p class="mb-6 text-xl">
+              As a software developer with a passion for learning and aiding
+              others, this website serves as my space to share knowledge and
+              creativity.
+            </p>
+            <p class="my-6 text-xl">
+              Aside from work, I love getting lost in books, playing video
+              games, folding origami or exploring the latest technology.
+            </p>
+            <p class="mb-6 text-xl">
+              I recharge by wandering through the city or in nature and enjoying
+              good food.
+            </p>
+            <a
+              rel="noreferrer noopener"
+              href={`https://github.com/${GITHUB_USERNAME}/`}
+            >
+              <div class="inline-flex items-center gap-1">
+                <GitHubIcon width={30} height={30} />
+                <p class="font-medium">GitHub</p>
+              </div>
+            </a>
+          </div>
+          <div
+            class="aspect-ratio-1 group relative z-0 h-min w-full max-w-[300px] flex-shrink-0 lg:max-w-[390px]"
+          >
+            <Image
+              src={DaniellImage}
+              alt="Daniell sitting"
+              quality={95}
+              format="webp"
+              loading="lazy"
+              class="rounded-lg"
+            />
+          </div>
+        </div>
+        <!-- #endregion -->
+        <div class="grid grid-cols-3 gap-8">
+          <!-- #region Posts -->
+          <div class="col-span-full flex flex-col gap-4 lg:col-span-2">
+            <div
+              class="relative col-span-full flex justify-between lg:col-span-2"
+            >
+              <h1 class="text-lg font-semibold">
+                📝 {publishedSortedPosts.length} Posts
+              </h1>
+              <a href="/rss.xml" class="inline-flex items-center gap-1">
+                <RSSIcon width={15} height={15} />
+                <p>Subscribe to RSS feed</p>
+              </a>
+            </div>
+            {publishedSortedPosts.map((post) => <BlogPostCard {...post} />)}
+          </div>
+          <!-- #endregion -->
+          <!-- #region Tracks -->
+          <div class="col-span-full flex flex-col gap-4 lg:col-span-1">
+            <h1 class="text-lg font-semibold">🔊 10 Most listened</h1>
+            <aside class="grid grid-cols-1 gap-6">
+              {
+                topTracks.map((track) => (
+                  <a href={track.trackUrl} target="_blank">
+                    <SpotifyTrack {...track} />
+                  </a>
+                ))
+              }
+            </aside>
+          </div>
+          <!-- #endregion -->
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

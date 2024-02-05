@@ -1,0 +1,98 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import type { Frontmatter } from "../pages/blog/[...slug].astro";
+import FormattedPublishDate from "../components/FormattedPublishDate.astro";
+import { createOgImage } from "../create-og-image.mts";
+
+interface Props {
+  frontmatter: Frontmatter;
+}
+
+const { title, summary, publishedAt, headings, minutesRead } =
+  Astro.props.frontmatter;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={summary}
+      image={createOgImage({ title, meta: summary })}
+    />
+  </head>
+
+  <body class="bg-off-white font-sans text-dark-gray">
+    <main>
+      <article
+        class="grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 py-[8%] font-sans xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3"
+      >
+        <Header />
+
+        <div class="xl:!col-end-5">
+          <h1 class="text-2xl font-medium sm:text-3xl">
+            {title}
+          </h1>
+
+          <div class="mt-2 flex space-x-2 text-lg text-dark-gray/80">
+            <FormattedPublishDate date={publishedAt} />
+            <div class="text-dark-gray/60">&middot;</div>
+            <p>{minutesRead}</p>
+          </div>
+        </div>
+
+        <div
+          class="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block"
+        >
+          <div class="space-y-6">
+            {
+              headings ? (
+                <div class="text-md space-y-2">
+                  <div class="uppercase text-dark-gray/50">On this page</div>
+
+                  {headings.map((heading) => {
+                    return (
+                      <div>
+                        <a
+                          href={`#${heading.slug}`}
+                          class:list={[
+                            "block text-dark-gray/70 underline-offset-2 hover:text-dark-gray hover:underline hover:decoration-dark-gray",
+                            heading.depth === 2 && "pl-2",
+                            heading.depth === 3 && "pl-4",
+                          ]}
+                        >
+                          {heading.text}
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : null
+            }
+
+            <div class="border-t border-dark-gray/10"></div>
+
+            <div class="flex items-center justify-between">
+              <div class="">
+                <button
+                  class="text-sm text-dark-gray/30 hover:text-dark-gray/60"
+                  onclick="
+                  window.scrollTo({ top: 0 })
+                  "
+                >
+                  Back to top
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="prose-quoteless prose prose-neutral text-lg prose-pre:border prose-pre:border-light-gray lg:text-xl"
+        >
+          <slot />
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

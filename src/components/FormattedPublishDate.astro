@@ -1,0 +1,34 @@
+---
+interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+
+const currentDate = new Date();
+const yearsAgo = currentDate.getFullYear() - date.getFullYear();
+const monthsAgo = currentDate.getMonth() - date.getMonth();
+const daysAgo = currentDate.getDate() - date.getDate();
+
+let formattedDate = "";
+
+if (yearsAgo > 0) {
+  formattedDate = `${yearsAgo}y ago`;
+} else if (monthsAgo > 0) {
+  formattedDate = `${monthsAgo}mo ago`;
+} else if (daysAgo > 0) {
+  formattedDate = `${daysAgo}d ago`;
+} else {
+  formattedDate = "Today";
+}
+
+const fullDate = date.toLocaleString("en-us", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+---
+
+<time datetime={date.toISOString()}>
+  {fullDate} ({formattedDate})
+</time>

@@ -1,0 +1,37 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import type { MarkdownHeading } from "astro";
+
+type Props = CollectionEntry<"blog">;
+type FrontmatterData = Props["data"];
+
+interface FrontmatterAddons {
+  headings: MarkdownHeading[];
+  minutesRead: string;
+}
+
+export type Frontmatter = FrontmatterData & FrontmatterAddons;
+
+const post = Astro.props;
+const { Content, remarkPluginFrontmatter, headings } = await post.render();
+
+const frontmatter = {
+  ...(remarkPluginFrontmatter as Frontmatter),
+  publishedAt: new Date(remarkPluginFrontmatter.publishedAt),
+  headings,
+} satisfies Frontmatter;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+---
+
+<BlogPost frontmatter={frontmatter}>
+  <Content />
+</BlogPost>

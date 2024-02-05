@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"blog">;
+
+const { slug, data } = Astro.props;
+---
+
+<a
+  href={`/blog/${slug}`}
+  data-astro-prefetch
+  class="rounded bg-cream px-3 py-4 outline outline-1 outline-light-brown"
+>
+  <div
+    class="flex flex-col items-start justify-between md:flex-row md:items-center"
+  >
+    <h2 class="text-lg font-medium">{data.title}</h2>
+    <!-- <p>{date} • {timeToRead.text}</p> -->
+  </div>
+  <p>{data.summary}</p>
+</a>
