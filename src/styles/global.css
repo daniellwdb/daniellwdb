@@ -15,3 +15,22 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* https://github.com/shikijs/shiki/issues/3#issuecomment-830564854 */
+@media only screen and (min-width: 768px) {
+  code {
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
+    display: inline-flex;
+    white-space: nowrap;
+    text-align: right;
+    color: var(--astro-code-token-comment);
+  }
+}
