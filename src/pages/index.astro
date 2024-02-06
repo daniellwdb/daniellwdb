@@ -15,7 +15,6 @@ import BlogPostCard from "../components/BlogPostCard.astro";
 import { GET, type APIResponse } from "./api/spotify";
 import SpotifyTrack from "../components/SpotifyTrack.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
-// import Header from "../components/Header.astro";
 
 const response = await GET(Astro);
 const { topTracks } = (await response.json()) as APIResponse;
