@@ -17,7 +17,7 @@ import SpotifyTrack from "../components/SpotifyTrack.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 
 const response = await GET(Astro);
-const { topTracks } = (await response.json()) as APIResponse;
+const { topTracks, currentlyPlaying } = (await response.json()) as APIResponse;
 
 const blogCollection = await getCollection("blog");
 const publishedSortedPosts = blogCollection
@@ -112,6 +112,18 @@ const publishedSortedPosts = blogCollection
           <!-- #endregion -->
           <!-- #region Tracks -->
           <div class="col-span-full flex flex-col gap-4 lg:col-span-1">
+            {
+              currentlyPlaying && (
+                <>
+                  <h1 class="text-lg font-semibold">🔊 Now playing</h1>
+                  <aside class="mb-8">
+                    <a href={currentlyPlaying.trackUrl} target="_blank">
+                      <SpotifyTrack {...currentlyPlaying} />
+                    </a>
+                  </aside>
+                </>
+              )
+            }
             <h1 class="text-lg font-semibold">🔊 10 Most listened</h1>
             <aside class="grid grid-cols-1 gap-6">
               {

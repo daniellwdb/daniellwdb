@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import vercelStatic from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel/serverless";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
@@ -36,8 +36,8 @@ export default defineConfig({
   image: {
     domains: ["res.cloudinary", "i.scdn.co"],
   },
-  output: "static",
-  adapter: vercelStatic({
+  output: "hybrid",
+  adapter: vercel({
     imageService: true,
   }),
 });
