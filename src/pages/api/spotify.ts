@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 
+export const prerender = false;
+
 export interface TrackInfo {
   title: string;
   artist: string;
@@ -87,7 +89,7 @@ export const GET: APIRoute = async () => {
     } satisfies APIResponse),
     {
       headers: {
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=30",
+        "Cache-Control": "public, s-maxage=10, stale-while-revalidate=59",
       },
     },
   );
