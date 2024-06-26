@@ -8,11 +8,12 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { HEADING_LINK_ANCHOR, SITE_URL } from "./src/consts";
 import robotsTxt from "astro-robots-txt";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), react()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
@@ -38,9 +39,6 @@ export default defineConfig({
   },
   output: "hybrid",
   adapter: vercel({
-    isr: {
-      expiration: 60 * 60 * 24,
-    },
     webAnalytics: {
       enabled: true,
     },

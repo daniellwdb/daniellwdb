@@ -1,6 +1,4 @@
 ---
-export const prerender = false;
-
 import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
 import {
@@ -14,12 +12,8 @@ import GitHubIcon from "../components/icons/GitHubIcon.astro";
 import RSSIcon from "../components/icons/RSSIcon.astro";
 import { getCollection } from "astro:content";
 import BlogPostCard from "../components/BlogPostCard.astro";
-import { GET, type APIResponse } from "./api/spotify";
-import SpotifyTrack from "../components/SpotifyTrack.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
-
-const response = await GET(Astro);
-const { topTracks, currentlyPlaying } = (await response.json()) as APIResponse;
+import { SpotifyTrackList } from "../components/SpotifyTrackList";
 
 const blogCollection = await getCollection("blog");
 const publishedSortedPosts = blogCollection
@@ -114,28 +108,7 @@ const publishedSortedPosts = blogCollection
           <!-- #endregion -->
           <!-- #region Tracks -->
           <div class="col-span-full flex flex-col gap-4 lg:col-span-1">
-            {
-              currentlyPlaying && (
-                <>
-                  <h1 class="text-lg font-semibold">🔊 Now playing</h1>
-                  <aside class="mb-8">
-                    <a href={currentlyPlaying.trackUrl} target="_blank">
-                      <SpotifyTrack {...currentlyPlaying} />
-                    </a>
-                  </aside>
-                </>
-              )
-            }
-            <h1 class="text-lg font-semibold">🔊 10 Most listened</h1>
-            <aside class="grid grid-cols-1 gap-6">
-              {
-                topTracks.map((track) => (
-                  <a href={track.trackUrl} target="_blank">
-                    <SpotifyTrack {...track} />
-                  </a>
-                ))
-              }
-            </aside>
+            <SpotifyTrackList client:only="react" />
           </div>
           <!-- #endregion -->
         </div>

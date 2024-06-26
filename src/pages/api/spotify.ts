@@ -20,9 +20,8 @@ const BASIC_CREDENTIALS = Buffer.from(
 
 const SPOTIFY_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const SPOTIFY_AUTH_SCOPES = "user-read-currently-playing user-top-read";
-// TODO: Reimplement when stale-while-revalidate works
-// const SPOTIFY_CURRENTLY_PLAYING_ENDPOINT =
-//   "https://api.spotify.com/v1/me/player/currently-playing";
+const SPOTIFY_CURRENTLY_PLAYING_ENDPOINT =
+  "https://api.spotify.com/v1/me/player/currently-playing";
 const SPOTIFY_USER_TOP_ENDPOINT =
   "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10";
 
@@ -57,10 +56,10 @@ export const GET: APIRoute = async () => {
     }).toString(),
   }).then((res) => res.json());
 
-  // const currentlyPlayingResponse = await fetcher(
-  //   SPOTIFY_CURRENTLY_PLAYING_ENDPOINT,
-  //   accessToken,
-  // );
+  const currentlyPlayingResponse = await fetcher(
+    SPOTIFY_CURRENTLY_PLAYING_ENDPOINT,
+    accessToken,
+  );
 
   const userTopResponse = await fetcher(SPOTIFY_USER_TOP_ENDPOINT, accessToken);
 
@@ -69,23 +68,27 @@ export const GET: APIRoute = async () => {
       ? ([] as unknown as SpotifyApi.UsersTopTracksResponse)
       : ((await userTopResponse.json()) as SpotifyApi.UsersTopTracksResponse);
 
-  // const currentlyPlaying =
-  //   currentlyPlayingResponse.status === 204 ||
-  //   currentlyPlayingResponse.status > 400
-  //     ? undefined
-  //     : ((await currentlyPlayingResponse.json()) as SpotifyApi.CurrentlyPlayingResponse);
+  const currentlyPlaying =
+    currentlyPlayingResponse.status === 204 ||
+    currentlyPlayingResponse.status > 400
+      ? undefined
+      : ((await currentlyPlayingResponse.json()) as SpotifyApi.CurrentlyPlayingResponse);
 
-  // const currentlyPlayingTrack =
-  //   currentlyPlaying?.item?.type === "track"
-  //     ? currentlyPlaying.item
-  //     : undefined;
+  const currentlyPlayingTrack =
+    currentlyPlaying?.item?.type === "track"
+      ? currentlyPlaying.item
+      : undefined;
 
   return new Response(
     JSON.stringify({
-      // currentlyPlaying:
-      //   currentlyPlayingTrack && formatTrack(currentlyPlayingTrack),
-      currentlyPlaying: undefined,
+      currentlyPlaying:
+        currentlyPlayingTrack && formatTrack(currentlyPlayingTrack),
       topTracks: userTop.items.map(formatTrack),
     } satisfies APIResponse),
+    {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=30",
+      },
+    },
   );
 };
