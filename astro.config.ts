@@ -38,7 +38,9 @@ export default defineConfig({
   },
   output: "hybrid",
   adapter: vercel({
-    isr: true,
+    isr: {
+      expiration: 30,
+    },
     webAnalytics: {
       enabled: true,
     },
