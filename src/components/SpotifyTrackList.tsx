@@ -3,8 +3,10 @@ import type { APIResponse } from "../pages/api/spotify";
 import { SpotifyTrack } from "./SpotifyTrack";
 
 export function SpotifyTrackList() {
-  const { data } = useSWR<APIResponse>("/api/spotify", (url: string) =>
-    fetch(url).then((res) => res.json()),
+  const { data } = useSWR<APIResponse>(
+    "/api/spotify",
+    (url: string) => fetch(url).then((res) => res.json()),
+    { refreshInterval: 30_000 },
   );
 
   return (
