@@ -3,7 +3,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 import typography from "@tailwindcss/typography";
 
 export default {
-  content: ["./src/**/*.{astro,md,mdx,tsx}"],
+  content: ["./src/**/*.{astro,md(x),tsx}"],
   theme: {
     colors: {
       "dark-gray": "#36393B",
