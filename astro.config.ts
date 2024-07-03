@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import vercel from "@astrojs/vercel/serverless";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
@@ -9,6 +8,7 @@ import { HEADING_LINK_ANCHOR, SITE_URL } from "./src/consts";
 import robotsTxt from "astro-robots-txt";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import preact from "@astrojs/preact";
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,10 +38,5 @@ export default defineConfig({
     domains: ["res.cloudinary", "i.scdn.co"],
   },
   output: "hybrid",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    imageService: true,
-  }),
+  adapter: netlify(),
 });
