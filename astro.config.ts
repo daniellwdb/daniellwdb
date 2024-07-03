@@ -38,5 +38,8 @@ export default defineConfig({
     domains: ["res.cloudinary", "i.scdn.co"],
   },
   output: "hybrid",
-  adapter: netlify(),
+  adapter: netlify({
+    edgeMiddleware: true,
+    imageCDN: true,
+  }),
 });
