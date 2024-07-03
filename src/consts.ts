@@ -3,6 +3,7 @@ export const SITE_DESCRIPTION =
   "Software Developer, creative thinker, and perpetual learner";
 export const SITE_URL = "https://daniell.dev";
 export const GITHUB_USERNAME = "daniellwdb";
+export const INSTAGRAM_URL = "https://www.instagram.com/daniell.photographs/";
 export const CLOUDINARY_CLOUD_NAME = "daniellwdb";
 export const MIDDLE_DOT = "\u00B7";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/daniellwijdenbosch/";
