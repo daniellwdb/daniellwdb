@@ -7,8 +7,8 @@ export const [createFetcherStore, createMutatorStore] = nanoquery({
 });
 
 export const $spotifyData = createFetcherStore<APIResponse>(["/api/spotify"], {
-  cacheLifetime: 60_000,
-  revalidateInterval: 30_000,
-  revalidateOnFocus: true,
-  revalidateOnReconnect: true,
+  // cacheLifetime: 60_000,
+  // revalidateInterval: 30_000,
+  // revalidateOnFocus: true,
+  // revalidateOnReconnect: true,
 });
