@@ -87,8 +87,7 @@ export const GET: APIRoute = async () => {
     } satisfies APIResponse),
     {
       headers: {
-        "Netlify-CDN-Cache-Control":
-          "public, durable, s-maxage=60, stale-while-revalidate=30",
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=30",
       },
     },
   );

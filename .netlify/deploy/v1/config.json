@@ -1,8 +1,0 @@
-{
-  "images": {
-    "remote_images": [
-      "https?://res\\.cloudinary/.*",
-      "https?://i\\.scdn\\.co/.*"
-    ]
-  }
-}
