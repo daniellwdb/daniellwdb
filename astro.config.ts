@@ -37,7 +37,7 @@ export default defineConfig({
   image: {
     domains: ["res.cloudinary", "i.scdn.co"],
   },
-  output: "hybrid",
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true,

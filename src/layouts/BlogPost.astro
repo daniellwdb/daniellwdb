@@ -3,7 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import type { Frontmatter } from "../pages/blog/[...slug].astro";
 import FormattedPublishDate from "../components/FormattedPublishDate.astro";
-import { createOgImage } from "../create-og-image.mts";
+import { createOgImage } from "../create-og-image";
 import { SITE_URL, MIDDLE_DOT } from "../consts";
 
 interface Props {

@@ -1,9 +1,9 @@
 import { CLOUDINARY_CLOUD_NAME, GITHUB_USERNAME } from "./consts";
 
-interface OGImageOptions {
+type OGImageOptions = {
   title: string;
   meta: string;
-}
+};
 
 function escape(str: string) {
   return encodeURIComponent(encodeURIComponent(str));
