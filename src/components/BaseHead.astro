@@ -3,11 +3,11 @@ import "../styles/global.css";
 import { createOgImage } from "../create-og-image";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
-interface Props {
+type Props = {
   title: string;
   description: string;
   image?: string;
-}
+};
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 

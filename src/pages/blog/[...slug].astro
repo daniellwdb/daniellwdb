@@ -6,10 +6,10 @@ import type { MarkdownHeading } from "astro";
 type Props = CollectionEntry<"blog">;
 type FrontmatterData = Props["data"];
 
-interface FrontmatterAddons {
+type FrontmatterAddons = {
   headings: MarkdownHeading[];
   minutesRead: string;
-}
+};
 
 export type Frontmatter = FrontmatterData & FrontmatterAddons;
 

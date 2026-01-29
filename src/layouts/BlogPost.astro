@@ -6,9 +6,9 @@ import FormattedPublishDate from "../components/FormattedPublishDate.astro";
 import { createOgImage } from "../create-og-image";
 import { SITE_URL, MIDDLE_DOT } from "../consts";
 
-interface Props {
+type Props = {
   frontmatter: Frontmatter;
-}
+};
 
 const { title, summary, publishedAt, headings, minutesRead } =
   Astro.props.frontmatter;

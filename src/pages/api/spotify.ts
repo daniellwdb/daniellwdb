@@ -2,17 +2,17 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-export interface TrackInfo {
+export type TrackInfo = {
   title: string;
   artist: string;
   trackUrl: string;
   coverImage: SpotifyApi.ImageObject;
-}
+};
 
-export interface APIResponse {
+export type APIResponse = {
   currentlyPlaying: TrackInfo | undefined;
   topTracks: TrackInfo[];
-}
+};
 
 const BASIC_CREDENTIALS = Buffer.from(
   `${import.meta.env.SPOTIFY_CLIENT_ID}:${
