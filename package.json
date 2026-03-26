@@ -21,7 +21,7 @@
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
     "@astrojs/tailwind": "^6.0.2",
-    "@astrojs/vercel": "^9.0.4",
+    "@astrojs/vercel": "^10.0.2",
     "@nanostores/preact": "^0.5.1",
     "@nanostores/query": "^0.3.3",
     "@tailwindcss/typography": "^0.5.10",
