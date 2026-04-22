@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import vercel from "@astrojs/vercel/serverless";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
@@ -8,12 +7,11 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { HEADING_LINK_ANCHOR, SITE_URL } from "./src/consts";
 import robotsTxt from "astro-robots-txt";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
-import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), preact()],
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
@@ -35,13 +33,7 @@ export default defineConfig({
     },
   },
   image: {
-    domains: ["res.cloudinary", "i.scdn.co"],
+    domains: ["res.cloudinary"],
   },
   output: "static",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    imageService: true,
-  }),
 });

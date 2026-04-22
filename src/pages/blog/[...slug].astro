@@ -25,9 +25,15 @@ const frontmatter = {
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
-  return posts.map((post) => ({
+  const publishedSortedPosts = posts
+    .flatMap((post) => (post.data.draft ? [] : [post]))
+    .sort(
+      (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+    );
+
+  return publishedSortedPosts.map((post) => ({
     params: { slug: post.slug },
-    props: post,
+    props: { post },
   }));
 }
 ---

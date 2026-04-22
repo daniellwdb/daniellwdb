@@ -14,11 +14,11 @@ import RSSIcon from "../components/icons/RSSIcon.astro";
 import { getCollection } from "astro:content";
 import BlogPostCard from "../components/BlogPostCard.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
-import { SpotifyTrackList } from "../components/SpotifyTrackList";
 import InstagramIcon from "../components/icons/InstagramIcon.astro";
 
-const blogCollection = await getCollection("blog");
-const publishedSortedPosts = blogCollection
+const collection = await getCollection("blog");
+
+const publishedSortedPosts = collection
   .flatMap((post) => (post.data.draft ? [] : [post]))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 ---
@@ -117,9 +117,9 @@ const publishedSortedPosts = blogCollection
           </div>
           <!-- #endregion -->
           <!-- #region Tracks -->
-          <div class="col-span-full flex flex-col gap-4 lg:col-span-1">
+          <!-- <div class="col-span-full flex flex-col gap-4 lg:col-span-1">
             <SpotifyTrackList client:load />
-          </div>
+          </div> -->
           <!-- #endregion -->
         </div>
       </div>
