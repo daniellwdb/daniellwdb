@@ -1,6 +1,6 @@
 export const SITE_TITLE = "Daniell Wijdenbosch";
 export const SITE_DESCRIPTION =
-  "Software Developer, creative thinker, and perpetual learner";
+  "Software Developer who always loves to learn new things";
 export const SITE_URL = "https://daniell.dev";
 export const GITHUB_USERNAME = "daniellwdb";
 export const INSTAGRAM_URL = "https://www.instagram.com/daniell.photographs/";

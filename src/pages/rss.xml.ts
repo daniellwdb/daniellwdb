@@ -17,7 +17,7 @@ export async function GET(context: APIContext) {
     items: posts.map((post) => ({
       ...post.data,
       pubDate: post.data.publishedAt,
-      link: `/blog/${post.slug}/`,
+      link: `/blog/${post.id}/`,
     })),
     stylesheet: "/rss/pretty-feed-v3.xsl",
   });

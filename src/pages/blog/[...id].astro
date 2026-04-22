@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 import type { MarkdownHeading } from "astro";
+import { render } from "astro:content";
 
 type Props = CollectionEntry<"blog">;
 type FrontmatterData = Props["data"];
@@ -14,26 +15,28 @@ type FrontmatterAddons = {
 export type Frontmatter = FrontmatterData & FrontmatterAddons;
 
 const post = Astro.props;
-const { Content, remarkPluginFrontmatter, headings } = await post.render();
+
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
 
 const frontmatter = {
-  ...(remarkPluginFrontmatter as Frontmatter),
-  publishedAt: new Date(remarkPluginFrontmatter.publishedAt),
+  ...post.data,
+  publishedAt: new Date(post.data.publishedAt),
   headings,
-} satisfies Frontmatter;
+  minutesRead: remarkPluginFrontmatter.minutesRead,
+};
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
   const publishedSortedPosts = posts
-    .flatMap((post) => (post.data.draft ? [] : [post]))
+    .filter((post) => !post.data.draft)
     .sort(
       (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
     );
 
   return publishedSortedPosts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
+    params: { id: post.id },
+    props: post,
   }));
 }
 ---

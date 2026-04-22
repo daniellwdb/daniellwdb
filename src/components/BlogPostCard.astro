@@ -3,11 +3,11 @@ import type { CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"blog">;
 
-const { slug, data } = Astro.props;
+const { id, data } = Astro.props;
 ---
 
 <a
-  href={`/blog/${slug}`}
+  href={`/blog/${id}`}
   data-astro-prefetch
   class="rounded bg-cream px-3 py-4 outline outline-1 outline-light-brown"
 >
