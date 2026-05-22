@@ -24,7 +24,7 @@ importers:
         specifier: ^6.0.2
         version: 6.0.2(astro@6.1.10(@types/node@24.12.2)(@vercel/functions@3.4.4)(jiti@1.21.7)(rollup@4.60.3)(typescript@5.9.3)(yaml@2.9.0))(tailwindcss@3.4.19(yaml@2.9.0))
       '@tailwindcss/typography':
-        specifier: ^0.5.19
+        specifier: ^0.5.10
         version: 0.5.19(tailwindcss@3.4.19(yaml@2.9.0))
       astro:
         specifier: 6.1.10
@@ -48,38 +48,38 @@ importers:
         specifier: ^0.34.5
         version: 0.34.5
       tailwindcss:
-        specifier: ^3.4.19
+        specifier: ^3.4.1
         version: 3.4.19(yaml@2.9.0)
     devDependencies:
       '@astrojs/markdown-remark':
         specifier: ^7.1.0
         version: 7.1.0
       '@commitlint/cli':
-        specifier: ^18.6.1
+        specifier: ^18.6.0
         version: 18.6.1(@types/node@24.12.2)(typescript@5.9.3)
       '@commitlint/config-conventional':
-        specifier: ^18.6.3
+        specifier: ^18.6.0
         version: 18.6.3
       '@commitlint/types':
-        specifier: ^18.6.1
+        specifier: ^18.6.0
         version: 18.6.1
       husky:
-        specifier: ^9.1.7
+        specifier: ^9.0.10
         version: 9.1.7
       lint-staged:
-        specifier: ^15.5.2
+        specifier: ^15.2.10
         version: 15.5.2
       prettier:
-        specifier: ^3.8.1
+        specifier: ^3.2.5
         version: 3.8.1
       prettier-plugin-astro:
         specifier: ^0.13.0
         version: 0.13.0
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.14
+        specifier: ^0.5.11
         version: 0.5.14(prettier-plugin-astro@0.13.0)(prettier@3.8.1)
       typescript:
-        specifier: ^5.9.3
+        specifier: ^5.3.3
         version: 5.9.3
 
 packages:
