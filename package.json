@@ -21,7 +21,7 @@
     "@astrojs/sitemap": "3.7.2",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "6.1.10",
+    "astro": "6.4.6",
     "astro-robots-txt": "^1.0.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
